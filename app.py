@@ -119,13 +119,24 @@ const times = prices.map((_,i)=>"Point "+(i+1));
 const pair = document.getElementById("pair");
 
 function drawChart(){
-  Plotly.newPlot("chart",[{
-    x:times,
-    y:prices,
-    type:"scatter",
-    mode:"lines+markers",
-    line:{color:"#60a5fa"}
-  }],{
+  Plotly.newPlot("chart",[
+{
+  x:times,
+  y:prices,
+  type:"scatter",
+  mode:"lines+markers",
+  name:"Demo Price",
+  line:{color:"#60a5fa"}
+},
+{
+  x:times,
+  y:calculateEMA(prices,5),
+  type:"scatter",
+  mode:"lines",
+  name:"EMA (5)",
+  line:{color:"#fbbf24",width:3}
+}
+],{
     paper_bgcolor:"#1e293b",
     plot_bgcolor:"#1e293b",
     font:{color:"white"},
